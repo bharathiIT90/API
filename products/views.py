@@ -19,7 +19,11 @@ from .models import Product, Variation, Category
 from .serializers import CategorySerializer
 
 #CBV API 
-class CategoryAPIListView(generics.ListAPIView):
+class CategoryListAPIView(generics.ListAPIView):
+	queryset = Category.objects.all()
+	serializer_class = CategorySerializer
+
+class CategoryRetrieveAPIView(generics.RetrieveAPIView):
 	queryset = Category.objects.all()
 	serializer_class = CategorySerializer
 
