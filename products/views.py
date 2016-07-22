@@ -9,15 +9,19 @@ from django.utils import timezone
 
 
 from django_filters import FilterSet, CharFilter, NumberFilter
+from rest_framework import generics
 # Create your views here.
 
 from .forms import VariationInventoryFormSet, ProductFilterForm
 from .mixins import StaffRequiredMixin
 from .models import Product, Variation, Category
 
+from .serializers import CategorySerializer
+
 #CBV API 
-
-
+class CategoryAPIListView(generics.ListAPIView):
+	queryset = Category.objects.all()
+	serializer_class = CategorySerializer
 
 
 

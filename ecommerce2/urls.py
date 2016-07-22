@@ -10,6 +10,10 @@ from orders.views import (
                     OrderList, 
                     OrderDetail)
 
+from products.views import (
+        CategoryAPIListView
+    )
+
 urlpatterns = [
     # Examples:
     url(r'^$', 'newsletter.views.home', name='home'),
@@ -30,6 +34,12 @@ urlpatterns = [
     url(r'^checkout/address/add/$', UserAddressCreateView.as_view(), name='user_address_create'),
     url(r'^checkout/final/$', CheckoutFinalView.as_view(), name='checkout_final'),
 
+]
+#API Patterns
+
+urlpatterns +=[
+    
+    url(r'^api/categories/$', CategoryAPIListView.as_view(), name='categories_api'),
 ]
 
 if settings.DEBUG:
