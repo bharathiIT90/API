@@ -15,8 +15,16 @@ from .forms import VariationInventoryFormSet, ProductFilterForm
 from .mixins import StaffRequiredMixin
 from .models import Product, Variation, Category
 
+#CBV API 
 
 
+
+
+
+
+
+
+#CBV 
 class CategoryListView(ListView):
 	model = Category
 	queryset = Category.objects.all()
