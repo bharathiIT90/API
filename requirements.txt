@@ -1,7 +1,12 @@
 braintree==3.19.0
 Django==1.8.4
+django-cors-headers==1.1.0
 django-crispy-forms==1.5.0
 django-filter==0.11.0
 django-registration-redux==1.2
+djangorestframework==3.4.0
+djangorestframework-jwt==1.8.0
+Markdown==2.6.6
 Pillow==2.9.0
+PyJWT==1.4.1
 requests==2.7.0
