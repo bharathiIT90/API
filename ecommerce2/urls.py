@@ -13,6 +13,9 @@ from orders.views import (
 from products.views import (
         CategoryListAPIView,
         CategoryRetrieveAPIView,
+        ProductListAPIView,
+        ProductRetrieveAPIView,
+
     )
 
 urlpatterns = [
@@ -42,6 +45,8 @@ urlpatterns +=[
     
     url(r'^api/categories/$', CategoryListAPIView.as_view(), name='categories_api'),
     url(r'^api/categories/(?P<pk>\d+)/$', CategoryRetrieveAPIView.as_view(), name='category_detail_api'),
+    url(r'^api/products/$', ProductListAPIView.as_view(), name='products_api'),
+    url(r'^api/products/(?P<pk>\d+)/$', ProductRetrieveAPIView.as_view(), name='products_detail_api'),
 ]
 
 if settings.DEBUG:
