@@ -10,13 +10,20 @@ from django.utils import timezone
 
 from django_filters import FilterSet, CharFilter, NumberFilter
 from rest_framework import generics
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication 
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+
 # Create your views here.
 
 from .forms import VariationInventoryFormSet, ProductFilterForm
 from .mixins import StaffRequiredMixin
 from .models import Product, Variation, Category
 
-from .serializers import CategorySerializer, ProductSerializer,ProductDetailSerializer
+from .serializers import (CategorySerializer, 
+		ProductSerializer,
+		ProductDetailSerializer,
+		ProductDetailUpdateSerializer
+		)
 
 #CBV API 
 class CategoryListAPIView(generics.ListAPIView):
@@ -24,16 +31,23 @@ class CategoryListAPIView(generics.ListAPIView):
 	serializer_class = CategorySerializer
 
 class CategoryRetrieveAPIView(generics.RetrieveAPIView):
+	authentication_classes = [SessionAuthentication]
+	permission_classes = [IsAuthenticated]
 	queryset = Category.objects.all()
 	serializer_class = CategorySerializer
 
 class ProductListAPIView(generics.ListAPIView):
+	permission_classes = [IsAuthenticated]
 	queryset = Product.objects.all()
 	serializer_class = ProductSerializer
 
 class ProductRetrieveAPIView(generics.RetrieveAPIView):
 	queryset = Product.objects.all()
 	serializer_class = ProductDetailSerializer
+
+# class ProductCreateAPIView(generics.CreateAPIView):
+# 	queryset = Product.objects.all()
+# 	serializer_class = ProductDetailUpdateSerializer
 
 
 
